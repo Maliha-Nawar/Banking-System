@@ -1,35 +1,31 @@
-PLC_Bank_Ltd={'Md. Shahjalal':12000,
-              'Aminul Haque':23000,
-              'Mostofa Kamal':78000,
-              'Nadia Sultana':12300,
-              'Shahla Shiraj':90000}
-for u,v in PLC_Bank_Ltd.items():
-    print(u+" holds "+str(v)+" BDT")
-x=1
-while x<6: #for security purpose
-    name=input("Please enter depositor's name: ")
-    if name in PLC_Bank_Ltd.keys():
-        ans=input("Account balance is "+str(PLC_Bank_Ltd[name])+" BDT. Any balance update required? ")
-        if ans=="yes":
-            newbalan=input("Please insert the new amount in BDT: ")
-            PLC_Bank_Ltd[name]=newbalan
-            print("Balance has been updated. You have " + str(5 - x) + " attempts left")
-        elif ans=='':
-            break
-        else:
-            print("Ok. You have " + str(5 - x) + " attempts left")
-    elif name=='':
-        break
+bank={"Shomita":34000,"Kaiser":90000,"Parul":12000,"Kakoli":78000}
+print("Welcome to PLC Bank")
+print("Press->")
+print("1) to view balance")
+print("2) to view Bank's full information")
+print("3) to edit balance")
+print("4) to exit")
+ans=int(input("Your ans: "))
+if ans==1:
+    name=input("Please insert user's name here : ")
+    if name in bank.keys():
+        print(name+"'s bank balance is "+str(bank[name]))
     else:
-        ans=input("The name doesn't match with the database. Would you like to add a new record? ")
-        if ans=='yes':
-            balan=input("Please insert the balance of the user: ")
-            PLC_Bank_Ltd[name]=balan
-            print("Database has been updated. You have " + str(5 - x) + " attempts left")
-        elif ans=="no":
-            print("Ok. You have " + str(5 - x) + " attempts left")
+        yn=input("We don't have any account by this name. Would you like to create an account by "+name+"?")
+        if yn=="yes":
+            balance=input("Please, insert the balance here: ")
+            balance=bank[name]
+            print("New data has been successfully inserted!")
         else:
-            break
-    x=x+1
-for u,v in PLC_Bank_Ltd.items():
-    print(u+" holds "+str(v)+" BDT")
+            print("ok. Thank you for choosing PLC Bank")
+elif ans==2:
+    print(bank.items())
+elif ans==3:
+    name=input("Please, enter the user name here: ")
+    newbalance = input("New balance?-> ")
+    newbalance = bank[name]
+    print("Data has been successfully edited")
+elif ans==4:
+    print("Thank you for choosing PLC1 Bank!")
+else:
+    print("Please give appropriate indication")
